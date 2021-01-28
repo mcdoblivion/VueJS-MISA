@@ -2,7 +2,7 @@
   <div id="app">
     <v-main>
       <Navbar />
-      <Header />
+      <Header :departments="departments" />
       <Content />
     </v-main>
   </div>
@@ -23,7 +23,7 @@ export default {
   },
 
   data: () => ({
-    //
+    departments: ["Nhà hàng Biển Đông"],
   }),
 };
 </script>
