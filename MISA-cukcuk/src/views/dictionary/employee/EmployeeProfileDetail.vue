@@ -10,7 +10,7 @@
       :class="{ isHide: isHide }"
     >
       <div class="dialog-modal"></div>
-      <div class="dialog-content">
+      <div class="dialog-content" @mousedown="handleDrag">
         <div class="dialog-header">
           <div class="dialog-header-title">THÔNG TIN NHÂN VIÊN</div>
           <div class="dialog-header-close">
@@ -267,15 +267,23 @@
 </template>
 <script>
 // import axios from "axios";
+
 export default {
+  components: {},
+
   methods: {
+    handleDrag() {},
+
     btnAddOnClick() {},
+
     btnCancelOnClick() {
       this.$emit("closePopup", true);
     },
+
     rowOnClick(employee) {
       alert(employee.FullName);
     },
+
     async saveEmployee() {
       // const response = await axios.post(
       //     "http://api.manhnv.net/api/employees"
@@ -283,6 +291,7 @@ export default {
       console.log("Save employee");
     },
   },
+
   data() {
     return {
       dialog: false,
@@ -318,11 +327,13 @@ export default {
       },
     };
   },
+
   props: {
     isHide: Boolean,
   },
 };
 </script>
+
 <style scoped>
 .isHide {
   display: none;

@@ -1,11 +1,10 @@
 <template>
   <div class="header">
     <div class="department-info">
-      <select class="m-combobox">
-        <option>Nhà hàng Biển Đông</option>
-        <option>Nhà hàng Hải Dương</option>
-        <option>Nhà hàng Đội Cấn</option>
-        <option>Nhà hàng Cầu Giấy</option>
+      <select>
+        <option v-for="(item, index) in departments" :key="index">
+          {{ item }}
+        </option>
       </select>
     </div>
     <div class="account-info">
@@ -15,3 +14,14 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    departments: {
+      type: Array,
+      default: () => [],
+    },
+  },
+};
+</script>

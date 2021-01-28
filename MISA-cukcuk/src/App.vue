@@ -23,7 +23,12 @@ export default {
   },
 
   data: () => ({
-    departments: ["Nhà hàng Biển Đông"],
+    departments: [
+      "Nhà hàng Biển Đông",
+      "Nhà hang Cầu Giấy",
+      "Nhà hàng Đội Cấn",
+      "Nhà hàng Hải Dương",
+    ],
   }),
 };
 </script>
