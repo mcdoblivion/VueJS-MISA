@@ -1,19 +1,19 @@
-
 /* Grid */
 .grid {
     width: 100%;
-    overflow-x:auto;
-    overflow-y:hidden;
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
+.grid .grid-header {
+    height: 50px;
+}
 
-    .grid .grid-header {
-        height: 50px;
-    }
-
-    .grid .grid-content, .tablescroll_wrapper, .tablescroll {
-        height: calc(100% - 25px);
-    }
+.grid .grid-content,
+.tablescroll_wrapper,
+.tablescroll {
+    height: calc(100% - 25px);
+}
 
 .tablescroll {
 }
@@ -25,9 +25,9 @@
     text-align: left;
 }
 
-    .grid table th .cell {
-        padding: 15px 16px !important;
-    }
+.grid table th .cell {
+    padding: 15px 16px !important;
+}
 
 .grid table td {
     border-bottom: 1px solid #bbbbbb;
@@ -41,7 +41,6 @@
     word-break: break-all;
 }
 
-
 .grid table th {
     /*z-index:1;
     position:sticky;
@@ -52,7 +51,7 @@
     font-weight: bold !important;
 }
 
-.grid tbody tr:nth-child(2n+1) {
+.grid tbody tr:nth-child(2n + 1) {
     background-color: #fafafa;
 }
 
@@ -80,16 +79,16 @@ html > body div.tableContainer {
     overflow: hidden;
     width: 900px;
 }
-    /*define width of table. IE browsers only*/
-    div.tableContainer table {
-        float: left;
-        border-spacing: 0;
-    }
+/*define width of table. IE browsers only*/
+div.tableContainer table {
+    float: left;
+    border-spacing: 0;
+}
 
-        div.tableContainer table tr {
-            display: table;
-            width: 100%;
-        }
+div.tableContainer table tr {
+    display: table;
+    width: 100%;
+}
 /* set table header to a fixed position. WinIE 6.x only                                       
  In WinIE 6.x, any element with a position property set to relative and is a child of       
  an element that has an overflow property set, the relative value translates into fixed.    
@@ -118,14 +117,15 @@ html > body .grid tbody.scrollContent {
     overflow: auto;
     width: 100%;
 }
-    /*make TD elements pretty. Provide alternating classes for striping the table*/
-    .grid  tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
-        background: #fff;
-        border-bottom: none;
-        border-left: none;
-        border-right: 1px solid #ccc;
-        border-top: 1px solid #ddd;
-    }
+/*make TD elements pretty. Provide alternating classes for striping the table*/
+.grid tbody.scrollContent td,
+tbody.scrollContent tr.normalRow td {
+    background: #fff;
+    border-bottom: none;
+    border-left: none;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ddd;
+}
 
 .grid td div {
     max-width: 200px;

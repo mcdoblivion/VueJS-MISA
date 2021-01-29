@@ -10,8 +10,8 @@
       :class="{ isHide: isHide }"
     >
       <div class="dialog-modal"></div>
-      <div class="dialog-content" @mousedown="handleDrag">
-        <div class="dialog-header">
+      <div class="dialog-content">
+        <div class="dialog-header" @mousedown="handleDrag">
           <div class="dialog-header-title">THÔNG TIN NHÂN VIÊN</div>
           <div class="dialog-header-close">
             <button v-on:click="btnCancelOnClick">x</button>
@@ -272,7 +272,45 @@ export default {
   components: {},
 
   methods: {
-    handleDrag() {},
+    handleDrag(e) {
+      let pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+
+      let dialog = document.querySelector(".dialog-content");
+      dragMouseDown(e);
+
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        dialog.style.top = dialog.offsetTop - pos2 + "px";
+        dialog.style.left = dialog.offsetLeft - pos1 + "px";
+      }
+
+      function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    },
 
     btnAddOnClick() {},
 
@@ -337,18 +375,26 @@ export default {
 <style scoped>
 .isHide {
   display: none;
+  visibility: hidden;
 }
 .m-dialog {
   z-index: 999;
 }
 
 .dialog-header {
-  position: relative;
+  position: sticky;
+  top: 0%;
   height: 40px;
   line-height: 60px;
   padding-left: 16px;
+  padding-bottom: 10px;
   display: flex;
   font-size: 24px;
+  background-color: #fff;
+}
+
+.dialog-header:hover {
+  cursor: move;
 }
 
 .dialog-header-close {
@@ -373,20 +419,26 @@ export default {
   right: 0;
   background-color: black;
   opacity: 0.4;
+  z-index: inherit;
 }
 
 .dialog-content {
   position: fixed;
   border-radius: 5px;
   width: 750px;
+  height: 500px;
   background-color: #fff;
-  left: calc(50% - 325px);
-  top: calc(50% - 450px);
+  left: calc(50% - 375px);
+  top: calc(50% - 250px);
+  overflow: auto;
+  z-index: inherit;
 }
 .dialog-body {
   padding: 0 16px 16px 16px;
 }
 .dialog-footer {
+  position: sticky;
+  bottom: 0%;
   display: flex;
   width: 100%;
   height: 60px;
